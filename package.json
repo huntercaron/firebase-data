@@ -1,0 +1,13 @@
+{
+  "name": "firebase-data",
+  "version": "1.0.0",
+  "description": "Firebase wrapper for Framer's data object",
+  "main": "index.js",
+  "repository": "https://github.com/huntercaron/firebase-data",
+  "author": "Hunter Caron",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^6.3.4",
+    "framer": "^1.0.16"
+  }
+}
