@@ -6,10 +6,16 @@ import "firebase/database"
 export function FirebaseData(dataObj, config) {
     let database
     const data = Data(dataObj)
+    
 
     const initFirebase = () => {
         if (!firebase.apps.length) {
-            firebase.initializeApp(config)
+            console.log("hi")
+            try {
+                firebase.initializeApp(config)
+            } catch (e) {
+                console.log(e)
+            }   
         }
         database = firebase.database()
     }
