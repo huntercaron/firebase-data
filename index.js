@@ -3,7 +3,7 @@ import { Data } from "framer"
 import * as firebase from "firebase/app"
 import "firebase/database"
 
-export function FirebaseData(dataObj, config) {
+export function FirebaseData(firebaseConfig, dataObj) {
     let database
     const data = Data(dataObj)
     
@@ -12,7 +12,7 @@ export function FirebaseData(dataObj, config) {
         if (!firebase.apps.length) {
             console.log("hi")
             try {
-                firebase.initializeApp(config)
+                firebase.initializeApp(firebaseConfig)
             } catch (e) {
                 console.log(e)
             }   
