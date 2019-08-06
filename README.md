@@ -11,8 +11,8 @@ const data = Data({
 ```
 ### Realtime Synced Data Object
 ```js
-const data = FirebaseData({
+const data = FirebaseData(firebaseConfig, {
     userLoggedIn: false,
     accentColor: "#0000ff"
-}, firebaseConfig)
+})
 ```
