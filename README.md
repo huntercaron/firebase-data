@@ -1,6 +1,6 @@
 # FirebaseData
 
-A swappable replacement for the Framer data object that syncs the data in realtime to Firebase.
+A swappable replacement for the Framer data object that syncs in realtime to Firebase.
 
 ### Normal Data Object
 ```js

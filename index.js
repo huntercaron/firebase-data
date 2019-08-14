@@ -17,7 +17,7 @@ function FirebaseApp(config) {
     // https://firebase.google.com/docs/reference/js/firebase.app.App
     const app = initializeApp(config)
 
-    // The actuaß database object
+    // The actual database object
     // https://firebase.google.com/docs/reference/js/firebase.database.Database
     const database = app.database()
 
@@ -59,10 +59,10 @@ export function FirebaseData(config= {}, initialState, ref) {
         const refPath = ref ? `${ref}/${prop}` : prop
 
         database.ref(refPath).once("value", snapshot => {
-            data[prop] = snapshot.val()
-
-            if (snapshot.val() === null) {
-                database.ref().set("")
+            if (snapshot.exists()) {
+                data[prop] = snapshot.val()
+            } else {
+                database.ref(refPath).set(data[prop])
             }
         })
 
