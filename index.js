@@ -56,6 +56,7 @@ export function FirebaseData(config = {}, initialState, ref = "") {
     const data = Data(initialState)
     let initialized = false
 
+    // Promises that resolve when data is in sync with Firebase 
     const intializingProps = Object.keys(initialState).map(prop => {
         return new Promise((resolve, reject) => {
             const refPath = ref ? `${ref}/${prop}` : prop
@@ -79,6 +80,7 @@ export function FirebaseData(config = {}, initialState, ref = "") {
     })
 
     Promise.all(intializingProps).then(() => {
+        // Prevents setting of firebase variables before data is in sync
         initialized = true
     })
 
