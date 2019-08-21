@@ -28,3 +28,9 @@ export const NewMessage: Override = () => ({
         data.messages = [...data.messages, { userID: 1 }]
     },
 })
+
+export const EmptyMessages: Override = () => ({
+    onTap() {
+        data.messages = []
+    },
+})
