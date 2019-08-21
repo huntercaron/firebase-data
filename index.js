@@ -56,6 +56,7 @@ export function FirebaseData(config = {}, initialState, ref = "") {
     const data = Data(initialState)
     let initialized = false
 
+    // Setter & Getter for values in firebase
     const setFirebaseSafeValue = value =>
         Array.isArray(value) && value.length === 0
             ? "$$firebaseEmptyArray"
@@ -64,6 +65,7 @@ export function FirebaseData(config = {}, initialState, ref = "") {
     const getFirebaseSafeValue = value =>
         value === "$$firebaseEmptyArray" ? [] : value
 
+    // Promises that resolve when data is in sync with Firebase
     const intializingProps = Object.keys(initialState).map(prop => {
         return new Promise((resolve, reject) => {
             const refPath = ref ? `${ref}/${prop}` : prop
@@ -87,6 +89,7 @@ export function FirebaseData(config = {}, initialState, ref = "") {
     })
 
     Promise.all(intializingProps).then(() => {
+        // Prevents setting of firebase variables before data is in sync
         initialized = true
     })
 
