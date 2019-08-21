@@ -62,7 +62,7 @@ export function FirebaseData(config= {}, initialState, ref) {
             if (snapshot.exists()) {
                 data[prop] = snapshot.val()
             } else {
-                database.ref(refPath).set(data[prop])
+                database.ref(refPath).set(initialState[prop])
             }
         })
 
