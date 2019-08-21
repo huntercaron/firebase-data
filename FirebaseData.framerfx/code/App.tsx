@@ -3,13 +3,13 @@ import { Frame, useCycle, Override } from "framer"
 import { FirebaseData } from "./FirebaseData"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBctPiEporhwRjzZ1TOz89mZOCzN5ramAQ",
-    authDomain: "framer-firebase-116d1.firebaseapp.com",
-    databaseURL: "https://framer-firebase-116d1.firebaseio.com",
-    projectId: "framer-firebase-116d1",
+    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "framer-firebase.firebaseapp.com",
+    databaseURL: "https://framer-firebase.firebaseio.com",
+    projectId: "framer-firebase",
     storageBucket: "",
-    messagingSenderId: "155502761427",
-    appId: "1:155502761427:web:fc8436deb30c32ca",
+    messagingSenderId: "xxxxxxxxxxxx",
+    appId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 }
 
 const data = FirebaseData(firebaseConfig, {
