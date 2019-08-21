@@ -405,10 +405,10 @@ firebase@^6.3.4:
     "@firebase/storage" "0.3.8"
     "@firebase/util" "0.2.24"
 
-framer@^1.0.16:
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/framer/-/framer-1.0.16.tgz#cc043f17782bef82c12b46541929b6675d7615e0"
-  integrity sha512-khJxzMff3UeWGbw0a1rKSwGyDquY1ttMn+XtzSJVMWDAGXzuVuqEv7K2bO2WfKC62uG1CmvgvEjXnPmHFqPitA==
+framer@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/framer/-/framer-1.0.18.tgz#45af0901611db34094e895ebdc5e07457961f7d6"
+  integrity sha512-t9MJbXclUxSlMz670UIMrPxQhJukiPGGE3HMwWd+BILpst4QLy7b3X6QgEGrv/80hSwYBC0+NcnOyqPWpMagng==
 
 fs-minipass@^1.2.5:
   version "1.2.6"

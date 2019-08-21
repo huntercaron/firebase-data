@@ -8,6 +8,6 @@
   "license": "MIT",
   "dependencies": {
     "firebase": "^6.3.4",
-    "framer": "^1.0.16"
+    "framer": "^1.0.18"
   }
 }
