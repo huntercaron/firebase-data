@@ -54,16 +54,17 @@ function FirebaseApp(config) {
 export function FirebaseData(config = {}, initialState, ref = "") {
     const { database, app } = FirebaseApp(config)
     const data = Data(initialState)
+    const emptyArrayString = "$$firebaseEmptyArray"
     let initialized = false
 
     // Setter & Getter for values in firebase
     const setFirebaseSafeValue = value =>
         Array.isArray(value) && value.length === 0
-            ? "$$firebaseEmptyArray"
+            ? emptyArrayString
             : value
 
     const getFirebaseSafeValue = value =>
-        value === "$$firebaseEmptyArray" ? [] : value
+        value === emptyArrayString ? [] : value
 
     // Promises that resolve when data is in sync with Firebase
     const intializingProps = Object.keys(initialState).map(prop => {
