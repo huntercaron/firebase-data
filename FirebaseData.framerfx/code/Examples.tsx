@@ -1,5 +1,15 @@
 import { Data, Override } from "framer"
 
+var firebaseConfig = {
+    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "framer-firebase.firebaseapp.com",
+    databaseURL: "https://framer-firebase.firebaseio.com",
+    projectId: "framer-firebase",
+    storageBucket: "",
+    messagingSenderId: "xxxxxxxxxxxx",
+    appId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+}
+
 const data = Data({
     rotate: 0,
     rotateY: 0,
