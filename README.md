@@ -16,6 +16,3 @@ const data = FirebaseData(firebaseConfig, {
     accentColor: "#0000ff"
 })
 ```
-
-### Things to watch out for
-- Empty arrays cannot be stored on the FiredataData object. This is a limitation of firebase. To get around this it's best to check if that value is null and initlize the array when first adding to it.
