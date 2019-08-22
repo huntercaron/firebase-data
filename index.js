@@ -54,27 +54,37 @@ function FirebaseApp(config) {
 export function FirebaseData(config = {}, initialState, ref = "") {
     const { database, app } = FirebaseApp(config)
     const data = Data(initialState)
+    const firebaseEmptyArrayString = "$$firebaseEmptyArray"
     let initialized = false
 
-    // Promises that resolve when data is in sync with Firebase 
+    // Setter & Getter for values in firebase
+    const setFirebaseSafeValue = value =>
+        Array.isArray(value) && value.length === 0
+            ? firebaseEmptyArrayString
+            : value
+
+    const getFirebaseSafeValue = value =>
+        value === firebaseEmptyArrayString ? [] : value
+
+    // Promises that resolve when data is in sync with Firebase
     const intializingProps = Object.keys(initialState).map(prop => {
         return new Promise((resolve, reject) => {
             const refPath = ref ? `${ref}/${prop}` : prop
 
             database.ref(refPath).once("value", snapshot => {
                 if (snapshot.exists()) {
-                    data[prop] = snapshot.val()
+                    data[prop] = getFirebaseSafeValue(snapshot.val())
                     resolve()
                 } else {
                     database
                         .ref(refPath)
-                        .set(initialState[prop])
+                        .set(setFirebaseSafeValue(initialState[prop]))
                         .then(resolve)
                 }
             })
 
             database.ref(refPath).on("value", snapshot => {
-                data[prop] = snapshot.val()
+                data[prop] = getFirebaseSafeValue(snapshot.val())
             })
         })
     })
@@ -90,9 +100,11 @@ export function FirebaseData(config = {}, initialState, ref = "") {
         },
         set: (obj, prop, value) => {
             const refPath = ref ? `${ref}/${String(prop)}` : prop
-            if (initialized)
+            if (initialized) {
                 // @ts-ignore
-                database.ref(refPath).set(value)
+                database.ref(refPath).set(setFirebaseSafeValue(value))
+            }
+
             return true
         },
     })
