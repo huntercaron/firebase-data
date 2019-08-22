@@ -6,8 +6,21 @@
   "repository": "https://github.com/huntercaron/firebase-data",
   "author": "Hunter Caron",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "firebase": "^6.3.4",
     "framer": "^1.0.18"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-jest": "^24.9.0",
+    "dotenv": "^8.1.0",
+    "jest": "^24.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
