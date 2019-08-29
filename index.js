@@ -91,6 +91,11 @@ export function FirebaseData(config = {}, initialState, ref = "") {
         initialized = true
     })
 
+    // Remove Firebase connection on page unload
+    window.addEventListener("unload", () => {
+        app.delete()
+    })
+
     var p = new Proxy(data, {
         get: (target, name) => {
             return target[name]
