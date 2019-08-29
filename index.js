@@ -8,14 +8,11 @@ import "firebase/database"
  * @param config Firebase config object
  */
 function FirebaseApp(config) {
-    const initializeApp = config => {
-        firebase.initializeApp(config)
-        return firebase.app()
-    }
-
     // The Firebase app object
     // https://firebase.google.com/docs/reference/js/firebase.app.App
-    const app = initializeApp(config)
+    const app = !firebase.apps.length
+        ? firebase.initializeApp(config)
+        : firebase.app()
 
     // The actual database object
     // https://firebase.google.com/docs/reference/js/firebase.database.Database
