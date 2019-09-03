@@ -1,5 +1,4 @@
 import { Data } from "framer"
-//@ts-ignore
 import * as firebase from "firebase/app"
 import "firebase/database"
 
@@ -8,11 +7,36 @@ import "firebase/database"
  * @param config Firebase config object
  */
 function FirebaseApp(config) {
+    // Re-uses app instance and config object if they exist
+    // Otherwise creates new instance and stores it on window
+    const initializeApp = config => {
+        let configChanged = false
+        // Helper function for comparing config objects
+        const objCompare = (obj1, obj2) =>
+            Object.keys(obj1).length === Object.keys(obj2).length &&
+            Object.keys(obj1).every(
+                key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
+            )
+
+        // checks to see if config has changed
+        if (window.$$FirebaseDataConfig) {
+            configChanged = !objCompare(config, window.$$FirebaseDataConfig)
+            if (configChanged) {
+                window.$$FirebaseDataConfig = config
+                if (window.$$FirebaseDataInstance)
+                    window.$$FirebaseDataInstance.delete()
+            }
+        } else window.$$FirebaseDataConfig = config
+
+        if (!window.$$FirebaseDataInstance || configChanged)
+            window.$$FirebaseDataInstance = firebase.initializeApp(config)
+
+        return window.$$FirebaseDataInstance
+    }
+
     // The Firebase app object
     // https://firebase.google.com/docs/reference/js/firebase.app.App
-    const app = !firebase.apps.length
-        ? firebase.initializeApp(config)
-        : firebase.app()
+    const app = initializeApp(config)
 
     // The actual database object
     // https://firebase.google.com/docs/reference/js/firebase.database.Database
@@ -102,10 +126,8 @@ export function FirebaseData(config = {}, initialState, ref = "") {
         },
         set: (obj, prop, value) => {
             const refPath = ref ? `${ref}/${String(prop)}` : prop
-            if (initialized) {
-                // @ts-ignore
+            if (initialized)
                 database.ref(refPath).set(setFirebaseSafeValue(value))
-            }
 
             return true
         },
