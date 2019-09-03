@@ -1,6 +1,6 @@
 # FirebaseData
 
-> A swappable replacement for the Framer data object that syncs in realtime to Firebase.
+> A swappable replacement for the Framer data object that syncs it realtime to Firebase.
 
 ## Usage
 
@@ -28,7 +28,7 @@ const data = FirebaseData(firebaseConfig, {
 $ yarn add firebase-data
 ```
 
-(Guide on using NPM packages in Framer x)[https://www.framer.com/support/using-framer-x/npm-packages/]
+[Guide on using NPM packages in Framer x](https://www.framer.com/support/using-framer-x/npm-packages/)
 
 ## API
 
