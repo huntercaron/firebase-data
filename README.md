@@ -2,8 +2,6 @@
 
 > A swappable replacement for the Framer data object that syncs it realtime to Firebase.
 
-
-
 ## Usage
 
 #### Normal Data Object
@@ -24,8 +22,6 @@ const data = FirebaseData(firebaseConfig, {
 })
 ```
 
-
-
 ## Install
 
 ```
@@ -33,8 +29,6 @@ $ yarn add firebase-data
 ```
 
 [Guide on using NPM packages in Framer x](https://www.framer.com/support/using-framer-x/npm-packages/)
-
-
 
 ## API
 
